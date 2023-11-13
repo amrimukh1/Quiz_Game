@@ -102,7 +102,7 @@ public class QuizGame {
         return scanner.nextLine().trim().toUpperCase();
     }
 
-    //This method calculates points based on the time remaining.
+    //calculates points based on the time remaining.
     private static double calculatePoints(double timeRemaining) {
         if (timeRemaining >= 11) {
             return 1.0;
