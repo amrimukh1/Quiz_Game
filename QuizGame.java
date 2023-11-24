@@ -54,7 +54,7 @@ public class QuizGame {
             }
 
 
-        System.out.println("Quiz completed. Your score is: " + score + " out of " + questions.size() * game.MAX_SCORE);
+        System.out.println("Quiz completed. Your score is: " + score + "! Your total time in minutes:  " +totalTime /60);
     }
 
     private static void startTimer(int seconds) {
