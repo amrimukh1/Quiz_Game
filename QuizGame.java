@@ -79,8 +79,15 @@ public class QuizGame {
         String name = sc.next();
 
          System.out.println("Press enter to start the game");
-        List<Question> questions = readQuestionsFromFile("Science_quiz.txt");
 
+          Scanner scanner2 = new Scanner(System.in);
+         scanner2.nextLine();
+         System.out.println("Let's continue!");
+
+        scanner2.close();
+         sc.close();
+         scanner.close(); 
+          
         int score = 0;
         double totalTime = 0.0;
 
