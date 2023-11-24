@@ -16,8 +16,14 @@ public class QuizGame {
 
     public static void main(String[] args) {
         QuizGame game = new QuizGame();
+        System.out.println("Please enter your name");
+       
+        Scanner sc = new Scanner(System.in);
+         
+        String name = sc.next();
 
-        List<Question> questions = readQuestionsFromFile("sports.txt");
+         System.out.println("Press enter to start the game");
+        List<Question> questions = readQuestionsFromFile("Science_quiz.txt");
 
         int score = 0;
         double totalTime = 0.0;
@@ -54,7 +60,7 @@ public class QuizGame {
             }
 
 
-        System.out.println("Quiz completed. Your score is: " + score + " out of " + questions.size() * game.MAX_SCORE);
+            System.out.println("Quiz completed, "+ name + " ! Your score is: " + score + " out of " + questions.size());
     }
 
     private static void startTimer(int seconds) {
