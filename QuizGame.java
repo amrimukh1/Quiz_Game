@@ -15,8 +15,20 @@ public class QuizGame {
     
 
     public static void main(String[] args) {
+
         QuizGame game = new QuizGame();
+        QuestionReader reader = new QuestionReader(); 
          List<Question> questions = new ArrayList<Question>();
+
+         try (BufferedReader regler_reader = new BufferedReader(new FileReader("regler.txt"))) {
+            // Read each line from the file
+            String line;
+            while ((line = regler_reader.readLine()) != null) {
+                System.out.println(line);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter choice ( 1-5 ) ");
         System.out.println("1. Muzic");
@@ -33,30 +45,30 @@ public class QuizGame {
                 {System.out.println("You chose Muzic , lets begin: ");
                     
                     
-                    questions = readQuestionsFromFile("musik.txt");
+                    questions = reader.readQuestionsFromFile("musik.txt");
                     break;                             
                 }
                     
                     
                 case 2:
                 {System.out.println("You chose Sport, lets begin: ");
-                  questions = readQuestionsFromFile("sports.txt");
+                  questions = reader.readQuestionsFromFile("sports.txt");
                     break;
             
                  }
                      
                 case 3:
                      {System.out.println("You chose History, lets begin: ");
-                     questions = readQuestionsFromFile("history.txt");
+                     questions = reader.readQuestionsFromFile("history.txt");
                     break;}
                 case 4:
                    {System.out.println("You chose Science, lets begin: ");
-                   questions = readQuestionsFromFile("Science_quiz.txt");
+                   questions = reader.readQuestionsFromFile("Science_quiz.txt");
                     break;}
                 case 5:
                      {
                         System.out.println("You chose All the categories above, lets begin: ");
-                        questions = readQuestionsFromFile("All.txt");
+                        questions = reader.readQuestionsFromFile("All.txt");
                     break;}
                 default:
                     System.out.println("Wrong choice, pls choose between 1-5");
@@ -70,8 +82,8 @@ public class QuizGame {
      //     }
         
           
-
-    //   List<Question> questions = readQuestionsFromFile("Science_quiz.txt");
+                  
+    
         System.out.println("Please enter your name");
        
         Scanner sc = new Scanner(System.in);
@@ -84,9 +96,9 @@ public class QuizGame {
          scanner2.nextLine();
          System.out.println("Let's continue!");
 
-        scanner2.close();
+      /*  scanner2.close();
          sc.close();
-         scanner.close(); 
+         scanner.close(); */ 
           
         int score = 0;
         double totalTime = 0.0;
@@ -95,9 +107,9 @@ public class QuizGame {
         for (Question q : questions) {        
 
             startTimer(QUESTION_TIME_LIMIT);//This starts a timer for the current question with the specified time limit.
-            displayQuestion(q);
+            reader.displayQuestion(q);
 
-           String userAnswer = getUserAnswer();
+           String userAnswer = reader.getUserAnswer();
                 System.out.println("User Answer is: " + userAnswer);
                 stopTimer();//This stops the timer after the user has provided an answer.
 
@@ -137,66 +149,10 @@ public class QuizGame {
             timer.cancel();
         }
     }
+       
+  
 
-    private static List<Question> readQuestionsFromFile(String filename) {
-        List<Question> questions = new ArrayList<>();
-
-        try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
-            String line;
-            while ((line = br.readLine()) != null) {
-                if (line.trim().isEmpty()) {
-                    continue; // Skip empty lines
-                }
-
-                String question = line;
-                List<String> choices = new ArrayList<>();
-                String correctAnswer = null;
-
-                for (int i = 0; i < 4; i++) {
-                    choices.add(br.readLine());
-                }
-
-                correctAnswer = br.readLine().substring("Answer:   ".length()).trim();
-                 // System.out.println("I am in readQuestionsFromFile and the Correct answer is :" + correctAnswer);
-
-                questions.add(new Question(question, choices, correctAnswer));
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        return questions;
-    }
-
-    private static void displayQuestion(Question question) {
-        System.out.println(question.question);
-        for (int i = 0; i < question.choices.size(); i++) {
-            System.out.println(question.choices.get(i));
-        }
-    }
-
-    private static String getUserAnswer() {
-           Scanner scanner = new Scanner(System.in) ; 
-            System.out.print("Your answer (A, B, C, or D): ");
-            String answer = scanner.nextLine().trim().toUpperCase();
-      // System.out.println("I am in getUserAnswerClass " + answer);
-            return answer;
-        }
-        
-
-        
     
-
-     //calculates points based on the time remaining.
-    // private double calculatePoints(double timeRemaining) {
-    //     if (timeRemaining >= 11) {
-    //         return MAX_SCORE;
-    //     } else if (timeRemaining > 0) {
-    //         return MAX_SCORE / 2;
-    //     } else {
-    //         return 0.0;
-    //     }
-    // }
 
     private double calculatePoints(double timeRemaining) {
         return timeRemaining;
