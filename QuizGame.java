@@ -16,8 +16,62 @@ public class QuizGame {
 
     public static void main(String[] args) {
         QuizGame game = new QuizGame();
+         List<Question> questions = new ArrayList<Question>();
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter choice ( 1-5 ) ");
+        System.out.println("1. Muzic");
+        System.out.println("2. Sport" );
+        System.out.println("3. Historia");
+        System.out.println("4. Vetenskap");
+        System.out.println("5. All");
+       
+       //if (scanner_1.hasNextInt()) {
+            // Read the integer input
+            int integerInput = Integer.parseInt(scanner.nextLine());
+            switch (integerInput) {
+                case 1:
+                {System.out.println("You chose Muzic , lets begin: ");
+                    
+                    
+                    questions = readQuestionsFromFile("musik.txt");
+                    break;                             
+                }
+                    
+                    
+                case 2:
+                {System.out.println("You chose Sport, lets begin: ");
+                  questions = readQuestionsFromFile("sports.txt");
+                    break;
+            
+                 }
+                     
+                case 3:
+                     {System.out.println("You chose History, lets begin: ");
+                     questions = readQuestionsFromFile("history.txt");
+                    break;}
+                case 4:
+                   {System.out.println("You chose Science, lets begin: ");
+                   questions = readQuestionsFromFile("Science_quiz.txt");
+                    break;}
+                case 5:
+                     {
+                        System.out.println("You chose All the categories above, lets begin: ");
+                        questions = readQuestionsFromFile("All.txt");
+                    break;}
+                default:
+                    System.out.println("Wrong choice, pls choose between 1-5");
+                    break;
+               
+            }
+            
+  //  } else {
+            
+    //        System.out.println("Invalid input. Please enter a valid integer.");
+     //     }
+        
+          
 
-        List<Question> questions = readQuestionsFromFile("sports.txt");
+    //   List<Question> questions = readQuestionsFromFile("Science_quiz.txt");
 
         int score = 0;
         double totalTime = 0.0;
@@ -107,10 +161,16 @@ public class QuizGame {
     }
 
     private static String getUserAnswer() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Your answer (A, B, C, or D): ");
-        return scanner.nextLine().trim().toUpperCase();
-    }
+           Scanner scanner = new Scanner(System.in) ; 
+            System.out.print("Your answer (A, B, C, or D): ");
+            String answer = scanner.nextLine().trim().toUpperCase();
+      // System.out.println("I am in getUserAnswerClass " + answer);
+            return answer;
+        }
+        
+
+        
+    
 
      //calculates points based on the time remaining.
     // private double calculatePoints(double timeRemaining) {
