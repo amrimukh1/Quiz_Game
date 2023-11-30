@@ -6,18 +6,23 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.time.Duration;
+import java.time.Instant;
 
 public class QuizGame {
     private static final int QUESTION_TIME_LIMIT = 20; // Time limit for each question in seconds
     //private static Timer timer;
 
     final double MAX_SCORE = 20;
+    private long seconds;
     
-
     public static void main(String[] args) {
 
         QuizGame game = new QuizGame();
         DisplayTime time = new DisplayTime();
+
+        //Record the start time
+        Instant startTime = Instant.now();
 
         QuestionReader reader = new QuestionReader(); 
          List<Question> questions = new ArrayList<Question>();
@@ -103,7 +108,7 @@ public class QuizGame {
          scanner.close(); */ 
           
         int score = 0;
-        double totalTime = 0.0;
+        //double totalTime = 0.0;
 
        
         for (Question q : questions) {        
@@ -132,56 +137,29 @@ public class QuizGame {
                 System.out.println("Time's up! Moving to the next question.\n");
             }
             
-            totalTime += timeRemaining;
+            //totalTime += timeRemaining;
 
             }
+            //Record the endTime
+            Instant endTime = Instant.now();
+            Duration duration = Duration.between(startTime, endTime);
+            game.seconds = duration.getSeconds();
 
+            //convert the seconds into minutes divided by 60
+            long minutes = game.seconds / 60;
 
-            System.out.println("Quiz completed, "+ name + " ! Your score is: " + score + "! Your total time in minutes:  " +totalTime /60);
+            System.out.println("Quiz completed, "+ name + " ! Your score is: " + score + "! Your total time in minutes: " + minutes+ " minutes and in seconds: " +game.seconds+ "seconds");
     }
 
-    /*private static void startTimer(int seconds) {
-        timerTask = new CustomTimerTask(seconds);
-        timer = new Timer();
-        timer.schedule(timerTask, 0, 1000);
-    }
-
-    private static void stopTimer() {
-        if (timer != null) {
-            timer.cancel();
-        }
+       /* private static String formatDecimal(double value) {
+        DecimalFormat decimalFormat = new DecimalFormat("#.##");
+        return decimalFormat.format(value);
     }*/
-       
-  
-
     
 
     private double calculatePoints(double timeRemaining) {
         return timeRemaining;
     }
-
-    /*static CustomTimerTask timerTask;
-    //This is a nested class that extends TimerTask and is used to define the behavior of the timer.
-
-    static class CustomTimerTask extends TimerTask {
-        private int counter;
-        
-        public CustomTimerTask(int seconds) {
-            this.counter = seconds;
-        }
-
-        @Override
-        public void run() {
-            if (counter > 0) {
-                counter--;
-            }
-        }
-
-        public int getCounter() {
-            return counter;
-        }
-       
-    }*/
 
        
     }
