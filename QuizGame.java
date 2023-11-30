@@ -4,8 +4,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import java.util.Timer;
-import java.util.TimerTask;
 import java.time.Duration;
 import java.time.Instant;
 
@@ -148,7 +146,7 @@ public class QuizGame {
             //convert the seconds into minutes divided by 60
             long minutes = game.seconds / 60;
 
-            System.out.println("Quiz completed, "+ name + " ! Your score is: " + score + "! Your total time in minutes: " + minutes+ " minutes and in seconds: " +game.seconds+ "seconds");
+            System.out.println("Quiz completed, "+ name + " ! Your score is: " + score + "! Your total time in minutes: " + minutes+ " minutes");
     }
 
        /* private static String formatDecimal(double value) {
