@@ -1,0 +1,71 @@
+   What is the chemical symbol for water?
+   A) H
+   B) O
+   C) H2O
+   D) CO2
+   Answer:C
+
+   Which planet is known as the "Red Planet"?
+   A) Venus
+   B) Mars
+   C) Jupiter
+   D) Saturn
+   Answer:B
+
+   What is the primary function of the heart in the human body?
+   A) Pumping blood
+   B) Digesting food
+   C) Filtering waste
+   D) Storing oxygen
+   Answer:A
+
+   What is the process by which plants make their own food using sunlight?
+   A) Respiration
+   B) Photosynthesis
+   C) Transpiration
+   D) Germination
+   Answer:B
+
+   What is the smallest unit of matter that retains the properties of an element?
+   A) Molecule
+   B) Atom
+   C) Cell
+   D) Compound
+   Answer:B
+
+   What is the Heisenberg Uncertainty Principle related to in quantum mechanics?
+   A) Speed of light
+   B) Particle acceleration
+   C) Electron position and momentum
+   D) Nuclear fusion
+   Answer:C
+
+   In genetics, what is the term for a sudden, permanent change in a gene?
+   A) Mutation
+   B) Hybridization
+   C) Translocation
+   D) Codon
+   Answer:A
+
+   What is the boiling point of water in Fahrenheit?
+   A) 100°F
+   B) 212°F
+   C) 32°F
+   D) 0°F
+   Answer:B
+
+   Which gas do plants absorb during photosynthesis?
+   A) Oxygen
+   B) Carbon Dioxide
+   C) Nitrogen
+   D) Hydrogen
+   Answer:B
+
+   What is the powerhouse of the cell?
+   A) Nucleus
+   B) Ribosome
+   C) Mitochondria
+   D) Endoplasmic Reticulum
+   Answer:C
+
+
