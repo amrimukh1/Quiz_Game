@@ -16,8 +16,6 @@ public class QuizGame {
         Player player = new Player();
         String player_name;
 
-        // Record the start time
-        time.recordStartTime();
 
         QuestionReader reader = new QuestionReader();
         List<Question> questions = new ArrayList<Question>();
@@ -36,10 +34,16 @@ public class QuizGame {
         questions = selectFile.readFromTxtFile(integerInput);
 
         GameController gameController = new GameController(questions);
+        
+        // Record the start time
+        time.recordStartTime();
+
         gameController.runQuizAndCalculateTime();
 
+        MyTimeDataClass totalDuration = time.recordEndTime();
+
         System.out.println("Quiz completed, " + player_name + " ! Your score is: " + gameController.score
-                + "! Your total time in minutes: " + time.recordEndTime() + " minutes");
+                + "! Your total time: " + totalDuration.getMinutes() + " minutes and " + totalDuration.getSeconds() + " seconds.");
     }
 
 }

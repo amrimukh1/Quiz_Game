@@ -9,6 +9,8 @@ public class TimeController {
     public Timer timer;
     public long total_time;
 
+    private Instant startTime;
+
     public CustomTimerTask timerTask;
 
     public void startTimer(int seconds) {
@@ -27,21 +29,12 @@ public class TimeController {
         return timeRemaining;
     }
 
-    public Instant recordStartTime() {
-
-        Instant startTime = Instant.now();
-        return startTime;
-
+    public void recordStartTime() {
+        startTime = Instant.now();
     }
 
-    public long recordEndTime() {
-        Instant endTime = Instant.now();
-        Duration duration = Duration.between(recordStartTime(), endTime);
-        total_time = duration.getSeconds();
-
-        // convert the seconds into minutes divided by 60
-        long minutes = total_time / 60;
-        return minutes;
+    public MyTimeDataClass recordEndTime() {
+        return new MyTimeDataClass(Duration.between(startTime, Instant.now()).getSeconds());
     }
 
     static class CustomTimerTask extends TimerTask {

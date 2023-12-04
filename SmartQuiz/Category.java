@@ -4,8 +4,6 @@ public enum CategoryType {
     SPORT,
     MUSIC,
     HISTORY,
-    SCIENCE,
-    ARTS,
-    MOVIES;
+    SCIENCE;
 }
 }
